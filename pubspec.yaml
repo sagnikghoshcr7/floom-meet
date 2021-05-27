@@ -16,6 +16,7 @@ dependencies:
   firebase_core: ^1.2.0
   flutter_gradient_colors: ^1.0.0
   uuid: ^3.0.4
+  google_fonts: ^2.1.0
   intl: ^0.17.0
   introduction_screen: ^2.1.0
   pin_code_fields: ^7.2.0
@@ -30,5 +31,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+
+  assets:
+    - assets/
 
   uses-material-design: true
