@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058013346054",
+    "project_id": "floom-meet",
+    "storage_bucket": "floom-meet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058013346054:android:36199aea405ccc26010687",
+        "android_client_info": {
+          "package_name": "com.example.floom_meet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058013346054-ta18p1ifd9653hul39f4rbd1t6c8fobj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByhPQJu770t3TZzV9K5q9nUhb6LL2eq-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058013346054-ta18p1ifd9653hul39f4rbd1t6c8fobj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

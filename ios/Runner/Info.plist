@@ -24,6 +24,10 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME)My app needs access to your camera for meetings</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>$(PRODUCT_NAME)My app needs access to your microphone for meetings</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
