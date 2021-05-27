@@ -1,3 +1,4 @@
+import 'package:floom_meet/screens/authentication/navigateauthscreen.dart';
 import 'package:floom_meet/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -46,7 +47,10 @@ class _IntroAuthScreenState extends State<IntroAuthScreen> {
         ),
       ],
       onDone: () {
-        print("Done");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NavigateAuthScreen()),
+        );
       },
       onSkip: () {},
       showSkipButton: true,
