@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floom_meet/screens/profileScreen.dart';
 import 'package:floom_meet/screens/videoConferenceScreen.dart';
 import 'package:floom_meet/variables.dart';
