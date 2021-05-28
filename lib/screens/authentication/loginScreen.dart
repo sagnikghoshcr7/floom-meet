@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floom_meet/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
@@ -8,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextField(
                       style: mystyle(18, Colors.black),
                       keyboardType: TextInputType.emailAddress,
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
                         prefixIcon: Icon(Icons.email),
@@ -70,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextField(
                       style: mystyle(18, Colors.black),
                       obscureText: true,
+                      controller: passwordController,
                       decoration: InputDecoration(
                         hintText: "Password",
                         prefixIcon: Icon(Icons.lock),
@@ -79,7 +84,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 40),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      try {
+                        int count = 0;
+                        FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                        Navigator.popUntil(context, (route) {
+                          return count++ == 2;
+                        });
+                      } catch (e) {
+                        print(e);
+                        var snackbar = SnackBar(
+                          content: Text(
+                            e.toString(),
+                            style: mystyle(20),
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      }
+                    },
                     child: Container(
                       width: MediaQuery.of(context).size.width / 2,
                       height: 45,

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floom_meet/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
@@ -8,6 +9,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: TextField(
                       style: mystyle(18, Colors.black),
                       keyboardType: TextInputType.emailAddress,
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
                         prefixIcon: Icon(Icons.email),
@@ -69,6 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: MediaQuery.of(context).size.width / 1.7,
                     child: TextField(
                       style: mystyle(18, Colors.black),
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Password",
@@ -82,6 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: MediaQuery.of(context).size.width / 1.7,
                     child: TextField(
                       style: mystyle(18, Colors.black),
+                      controller: usernameController,
                       decoration: InputDecoration(
                         hintText: "Username",
                         prefixIcon: Icon(Icons.person),
@@ -91,7 +98,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 40),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      try {
+                        FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        )
+                            .then((signedUser) {
+                          userCollection.doc(signedUser.user!.uid).set({
+                            'username': usernameController.text,
+                            'email': emailController.text,
+                            'password': passwordController.text,
+                            'uid': signedUser.user!.uid,
+                          });
+                        });
+                        Navigator.pop(context);
+                      } catch (e) {
+                        print(e);
+                        var snackbar = SnackBar(
+                          content: Text(
+                            e.toString(),
+                            style: mystyle(20),
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      }
+                    },
                     child: Container(
                       width: MediaQuery.of(context).size.width / 2,
                       height: 45,
