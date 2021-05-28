@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floom_meet/variables.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 2,
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: GradientColors.blue),
+              gradient: LinearGradient(colors: [Color.fromRGBO(100, 25, 25, 1), Color.fromRGBO(255, 25, 25, 1)]),
             ),
             child: Center(
               child: Image.asset(
@@ -129,9 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       width: MediaQuery.of(context).size.width / 2,
                       height: 45,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: GradientColors.pink,
-                        ),
+                        gradient: LinearGradient(colors: [Color.fromRGBO(100, 25, 25, 1), Color.fromRGBO(255, 25, 25, 1)]),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
